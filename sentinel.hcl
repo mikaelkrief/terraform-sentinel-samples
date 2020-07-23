@@ -11,5 +11,5 @@ policy "allowed-terraform-version" {
 
 policy "allowed-app-service-plan-tiers"{
   source ="./allowed-app-service-plan-tiers.sentinel"
-  enforcement_level = "advisory"
+  enforcement_level = "hard-mandatory"
 }
