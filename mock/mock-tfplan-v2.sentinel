@@ -1,0 +1,682 @@
+terraform_version = "0.12.28"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"azurerm_resource_group.rg": {
+			"address":        "azurerm_resource_group.rg",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "rg",
+			"provider_name":  "azurerm",
+			"tainted":        false,
+			"type":           "azurerm_resource_group",
+			"values": {
+				"location": "westeurope",
+				"name":     "RG_MyAPP_DemoTFCLOUD",
+				"tags":     null,
+				"timeouts": null,
+			},
+		},
+		"module.webapp.azurerm_app_service.app": {
+			"address":        "module.webapp.azurerm_app_service.app",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "module.webapp",
+			"name":           "app",
+			"provider_name":  "azurerm",
+			"tainted":        false,
+			"type":           "azurerm_app_service",
+			"values": {
+				"backup":                  [],
+				"client_affinity_enabled": false,
+				"client_cert_enabled":     false,
+				"enabled":                 true,
+				"https_only":              false,
+				"location":                "westeurope",
+				"name":                    "myappdemobookcloud",
+				"resource_group_name":     "RG_MyAPP_DemoTFCLOUD",
+				"tags":                    null,
+				"timeouts":                null,
+			},
+		},
+		"module.webapp.azurerm_app_service_plan.plan-app": {
+			"address":        "module.webapp.azurerm_app_service_plan.plan-app",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "module.webapp",
+			"name":           "plan-app",
+			"provider_name":  "azurerm",
+			"tainted":        false,
+			"type":           "azurerm_app_service_plan",
+			"values": {
+				"app_service_environment_id": null,
+				"is_xenon":                   null,
+				"kind":                       "Windows",
+				"location":                   "westeurope",
+				"name":                       "demoappsp",
+				"per_site_scaling":           null,
+				"reserved":                   null,
+				"resource_group_name":        "RG_MyAPP_DemoTFCLOUD",
+				"sku": [
+					{
+						"size": "S1",
+						"tier": "Standard",
+					},
+				],
+				"tags":     null,
+				"timeouts": null,
+			},
+		},
+		"module.webapp.azurerm_application_insights.appinsight-app": {
+			"address":        "module.webapp.azurerm_application_insights.appinsight-app",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "module.webapp",
+			"name":           "appinsight-app",
+			"provider_name":  "azurerm",
+			"tainted":        false,
+			"type":           "azurerm_application_insights",
+			"values": {
+				"application_type":    "web",
+				"disable_ip_masking":  false,
+				"location":            "westeurope",
+				"name":                "myappdemobookcloud",
+				"resource_group_name": "RG_MyAPP_DemoTFCLOUD",
+				"retention_in_days":   90,
+				"sampling_percentage": 100,
+				"tags":                null,
+				"timeouts":            null,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"azurerm_resource_group.rg": {
+		"address": "azurerm_resource_group.rg",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"location": "westeurope",
+				"name":     "RG_MyAPP_DemoTFCLOUD",
+				"tags":     null,
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"id": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "rg",
+		"provider_name":  "azurerm",
+		"type":           "azurerm_resource_group",
+	},
+	"module.webapp.azurerm_app_service.app": {
+		"address": "module.webapp.azurerm_app_service.app",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"backup":                  [],
+				"client_affinity_enabled": false,
+				"client_cert_enabled":     false,
+				"enabled":                 true,
+				"https_only":              false,
+				"location":                "westeurope",
+				"name":                    "myappdemobookcloud",
+				"resource_group_name":     "RG_MyAPP_DemoTFCLOUD",
+				"tags":                    null,
+				"timeouts":                null,
+			},
+			"after_unknown": {
+				"app_service_plan_id":   true,
+				"app_settings":          true,
+				"auth_settings":         true,
+				"backup":                [],
+				"connection_string":     true,
+				"default_site_hostname": true,
+				"id":                             true,
+				"identity":                       true,
+				"logs":                           true,
+				"outbound_ip_addresses":          true,
+				"possible_outbound_ip_addresses": true,
+				"site_config":                    true,
+				"site_credential":                true,
+				"source_control":                 true,
+				"storage_account":                true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "module.webapp",
+		"name":           "app",
+		"provider_name":  "azurerm",
+		"type":           "azurerm_app_service",
+	},
+	"module.webapp.azurerm_app_service_plan.plan-app": {
+		"address": "module.webapp.azurerm_app_service_plan.plan-app",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"app_service_environment_id": null,
+				"is_xenon":                   null,
+				"kind":                       "Windows",
+				"location":                   "westeurope",
+				"name":                       "demoappsp",
+				"per_site_scaling":           null,
+				"reserved":                   null,
+				"resource_group_name":        "RG_MyAPP_DemoTFCLOUD",
+				"sku": [
+					{
+						"size": "S1",
+						"tier": "Standard",
+					},
+				],
+				"tags":     null,
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"id": true,
+				"maximum_elastic_worker_count": true,
+				"maximum_number_of_workers":    true,
+				"sku": [
+					{
+						"capacity": true,
+					},
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "module.webapp",
+		"name":           "plan-app",
+		"provider_name":  "azurerm",
+		"type":           "azurerm_app_service_plan",
+	},
+	"module.webapp.azurerm_application_insights.appinsight-app": {
+		"address": "module.webapp.azurerm_application_insights.appinsight-app",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"application_type":    "web",
+				"disable_ip_masking":  false,
+				"location":            "westeurope",
+				"name":                "myappdemobookcloud",
+				"resource_group_name": "RG_MyAPP_DemoTFCLOUD",
+				"retention_in_days":   90,
+				"sampling_percentage": 100,
+				"tags":                null,
+				"timeouts":            null,
+			},
+			"after_unknown": {
+				"app_id":                                true,
+				"daily_data_cap_in_gb":                  true,
+				"daily_data_cap_notifications_disabled": true,
+				"id": true,
+				"instrumentation_key": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "module.webapp",
+		"name":           "appinsight-app",
+		"provider_name":  "azurerm",
+		"type":           "azurerm_application_insights",
+	},
+}
+
+output_changes = {}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"azurerm": {
+				"expressions": {
+					"features": [
+						{},
+					],
+				},
+				"name": "azurerm",
+			},
+		},
+		"root_module": {
+			"module_calls": {
+				"webapp": {
+					"expressions": {
+						"app_name": {
+							"constant_value": "myappdemobookcloud",
+						},
+						"location": {
+							"constant_value": "West Europe",
+						},
+						"resource_groupe_name": {
+							"references": [
+								"azurerm_resource_group.rg",
+							],
+						},
+						"service_plan_name": {
+							"constant_value": "demoappsp",
+						},
+					},
+					"module": {
+						"outputs": {
+							"webapp_id": {
+								"expression": {
+									"references": [
+										"azurerm_app_service.app",
+									],
+								},
+							},
+							"webapp_url": {
+								"expression": {
+									"references": [
+										"azurerm_app_service.app",
+									],
+								},
+							},
+						},
+						"resources": [
+							{
+								"address": "azurerm_app_service.app",
+								"expressions": {
+									"app_service_plan_id": {
+										"references": [
+											"azurerm_app_service_plan.plan-app",
+										],
+									},
+									"app_settings": {
+										"references": [
+											"azurerm_application_insights.appinsight-app",
+										],
+									},
+									"location": {
+										"references": [
+											"var.location",
+										],
+									},
+									"name": {
+										"references": [
+											"var.app_name",
+										],
+									},
+									"resource_group_name": {
+										"references": [
+											"var.resource_groupe_name",
+										],
+									},
+								},
+								"mode":                "managed",
+								"name":                "app",
+								"provider_config_key": "webapp:azurerm",
+								"schema_version":      0,
+								"type":                "azurerm_app_service",
+							},
+							{
+								"address": "azurerm_app_service_plan.plan-app",
+								"expressions": {
+									"location": {
+										"references": [
+											"var.location",
+										],
+									},
+									"name": {
+										"references": [
+											"var.service_plan_name",
+										],
+									},
+									"resource_group_name": {
+										"references": [
+											"var.resource_groupe_name",
+										],
+									},
+									"sku": [
+										{
+											"size": {
+												"constant_value": "S1",
+											},
+											"tier": {
+												"constant_value": "Standard",
+											},
+										},
+									],
+								},
+								"mode":                "managed",
+								"name":                "plan-app",
+								"provider_config_key": "webapp:azurerm",
+								"schema_version":      0,
+								"type":                "azurerm_app_service_plan",
+							},
+							{
+								"address": "azurerm_application_insights.appinsight-app",
+								"expressions": {
+									"application_type": {
+										"constant_value": "web",
+									},
+									"location": {
+										"references": [
+											"var.location",
+										],
+									},
+									"name": {
+										"references": [
+											"var.app_name",
+										],
+									},
+									"resource_group_name": {
+										"references": [
+											"var.resource_groupe_name",
+										],
+									},
+								},
+								"mode":                "managed",
+								"name":                "appinsight-app",
+								"provider_config_key": "webapp:azurerm",
+								"schema_version":      0,
+								"type":                "azurerm_application_insights",
+							},
+						],
+						"variables": {
+							"app_name": {
+								"description": "Name of application",
+							},
+							"location": {
+								"default":     "West Europe",
+								"description": "Location of Azure resource",
+							},
+							"resource_groupe_name": {
+								"description": "Resource groupe name",
+							},
+							"service_plan_name": {
+								"description": "Service plan name",
+							},
+						},
+					},
+					"source":             "app.terraform.io/demoBook/webapp/azurerm",
+					"version_constraint": "1.0.1",
+				},
+			},
+			"resources": [
+				{
+					"address": "azurerm_resource_group.rg",
+					"expressions": {
+						"location": {
+							"constant_value": "West Europe",
+						},
+						"name": {
+							"constant_value": "RG_MyAPP_DemoTFCLOUD",
+						},
+					},
+					"mode":                "managed",
+					"name":                "rg",
+					"provider_config_key": "azurerm",
+					"schema_version":      0,
+					"type":                "azurerm_resource_group",
+				},
+			],
+		},
+	},
+	"format_version": "0.1",
+	"planned_values": {
+		"root_module": {
+			"child_modules": [
+				{
+					"address": "module.webapp",
+					"resources": [
+						{
+							"address":        "module.webapp.azurerm_app_service.app",
+							"mode":           "managed",
+							"name":           "app",
+							"provider_name":  "azurerm",
+							"schema_version": 0,
+							"type":           "azurerm_app_service",
+							"values": {
+								"backup":                  [],
+								"client_affinity_enabled": false,
+								"client_cert_enabled":     false,
+								"enabled":                 true,
+								"https_only":              false,
+								"location":                "westeurope",
+								"name":                    "myappdemobookcloud",
+								"resource_group_name":     "RG_MyAPP_DemoTFCLOUD",
+								"tags":                    null,
+								"timeouts":                null,
+							},
+						},
+						{
+							"address":        "module.webapp.azurerm_app_service_plan.plan-app",
+							"mode":           "managed",
+							"name":           "plan-app",
+							"provider_name":  "azurerm",
+							"schema_version": 0,
+							"type":           "azurerm_app_service_plan",
+							"values": {
+								"app_service_environment_id": null,
+								"is_xenon":                   null,
+								"kind":                       "Windows",
+								"location":                   "westeurope",
+								"name":                       "demoappsp",
+								"per_site_scaling":           null,
+								"reserved":                   null,
+								"resource_group_name":        "RG_MyAPP_DemoTFCLOUD",
+								"sku": [
+									{
+										"size": "S1",
+										"tier": "Standard",
+									},
+								],
+								"tags":     null,
+								"timeouts": null,
+							},
+						},
+						{
+							"address":        "module.webapp.azurerm_application_insights.appinsight-app",
+							"mode":           "managed",
+							"name":           "appinsight-app",
+							"provider_name":  "azurerm",
+							"schema_version": 0,
+							"type":           "azurerm_application_insights",
+							"values": {
+								"application_type":    "web",
+								"disable_ip_masking":  false,
+								"location":            "westeurope",
+								"name":                "myappdemobookcloud",
+								"resource_group_name": "RG_MyAPP_DemoTFCLOUD",
+								"retention_in_days":   90,
+								"sampling_percentage": 100,
+								"tags":                null,
+								"timeouts":            null,
+							},
+						},
+					],
+				},
+			],
+			"resources": [
+				{
+					"address":        "azurerm_resource_group.rg",
+					"mode":           "managed",
+					"name":           "rg",
+					"provider_name":  "azurerm",
+					"schema_version": 0,
+					"type":           "azurerm_resource_group",
+					"values": {
+						"location": "westeurope",
+						"name":     "RG_MyAPP_DemoTFCLOUD",
+						"tags":     null,
+						"timeouts": null,
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "azurerm_resource_group.rg",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"location": "westeurope",
+					"name":     "RG_MyAPP_DemoTFCLOUD",
+					"tags":     null,
+					"timeouts": null,
+				},
+				"after_unknown": {
+					"id": true,
+				},
+				"before": null,
+			},
+			"mode":          "managed",
+			"name":          "rg",
+			"provider_name": "azurerm",
+			"type":          "azurerm_resource_group",
+		},
+		{
+			"address": "module.webapp.azurerm_app_service.app",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"backup":                  [],
+					"client_affinity_enabled": false,
+					"client_cert_enabled":     false,
+					"enabled":                 true,
+					"https_only":              false,
+					"location":                "westeurope",
+					"name":                    "myappdemobookcloud",
+					"resource_group_name":     "RG_MyAPP_DemoTFCLOUD",
+					"tags":                    null,
+					"timeouts":                null,
+				},
+				"after_unknown": {
+					"app_service_plan_id":   true,
+					"app_settings":          true,
+					"auth_settings":         true,
+					"backup":                [],
+					"connection_string":     true,
+					"default_site_hostname": true,
+					"id":                             true,
+					"identity":                       true,
+					"logs":                           true,
+					"outbound_ip_addresses":          true,
+					"possible_outbound_ip_addresses": true,
+					"site_config":                    true,
+					"site_credential":                true,
+					"source_control":                 true,
+					"storage_account":                true,
+				},
+				"before": null,
+			},
+			"mode":           "managed",
+			"module_address": "module.webapp",
+			"name":           "app",
+			"provider_name":  "azurerm",
+			"type":           "azurerm_app_service",
+		},
+		{
+			"address": "module.webapp.azurerm_app_service_plan.plan-app",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"app_service_environment_id": null,
+					"is_xenon":                   null,
+					"kind":                       "Windows",
+					"location":                   "westeurope",
+					"name":                       "demoappsp",
+					"per_site_scaling":           null,
+					"reserved":                   null,
+					"resource_group_name":        "RG_MyAPP_DemoTFCLOUD",
+					"sku": [
+						{
+							"size": "S1",
+							"tier": "Standard",
+						},
+					],
+					"tags":     null,
+					"timeouts": null,
+				},
+				"after_unknown": {
+					"id": true,
+					"maximum_elastic_worker_count": true,
+					"maximum_number_of_workers":    true,
+					"sku": [
+						{
+							"capacity": true,
+						},
+					],
+				},
+				"before": null,
+			},
+			"mode":           "managed",
+			"module_address": "module.webapp",
+			"name":           "plan-app",
+			"provider_name":  "azurerm",
+			"type":           "azurerm_app_service_plan",
+		},
+		{
+			"address": "module.webapp.azurerm_application_insights.appinsight-app",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"application_type":    "web",
+					"disable_ip_masking":  false,
+					"location":            "westeurope",
+					"name":                "myappdemobookcloud",
+					"resource_group_name": "RG_MyAPP_DemoTFCLOUD",
+					"retention_in_days":   90,
+					"sampling_percentage": 100,
+					"tags":                null,
+					"timeouts":            null,
+				},
+				"after_unknown": {
+					"app_id":                                true,
+					"daily_data_cap_in_gb":                  true,
+					"daily_data_cap_notifications_disabled": true,
+					"id": true,
+					"instrumentation_key": true,
+				},
+				"before": null,
+			},
+			"mode":           "managed",
+			"module_address": "module.webapp",
+			"name":           "appinsight-app",
+			"provider_name":  "azurerm",
+			"type":           "azurerm_application_insights",
+		},
+	],
+	"terraform_version": "0.12.28",
+}

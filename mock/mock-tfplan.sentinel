@@ -1,0 +1,430 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {},
+		"path": [],
+		"resources": {
+			"azurerm_resource_group": {
+				"rg": {
+					0: {
+						"applied": {
+							"location": "westeurope",
+							"name":     "RG_MyAPP_DemoTFCLOUD",
+							"tags":     null,
+							"timeouts": null,
+						},
+						"destroy": false,
+						"diff": {
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"location": {
+								"computed": false,
+								"new":      "westeurope",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "RG_MyAPP_DemoTFCLOUD",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+		},
+	},
+
+	"module.webapp": {
+		"data": {},
+		"path": [
+			"webapp",
+		],
+		"resources": {
+			"azurerm_app_service": {
+				"app": {
+					0: {
+						"applied": {
+							"backup":                  [],
+							"client_affinity_enabled": false,
+							"client_cert_enabled":     false,
+							"enabled":                 true,
+							"https_only":              false,
+							"location":                "westeurope",
+							"name":                    "myappdemobookcloud",
+							"resource_group_name":     "RG_MyAPP_DemoTFCLOUD",
+							"tags":                    null,
+							"timeouts":                null,
+						},
+						"destroy": false,
+						"diff": {
+							"app_service_plan_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"app_settings.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"auth_settings.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"backup.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"client_affinity_enabled": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"client_cert_enabled": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"connection_string.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"default_site_hostname": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"enabled": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"https_only": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"identity.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"location": {
+								"computed": false,
+								"new":      "westeurope",
+								"old":      "",
+							},
+							"logs.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "myappdemobookcloud",
+								"old":      "",
+							},
+							"outbound_ip_addresses": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"possible_outbound_ip_addresses": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"resource_group_name": {
+								"computed": false,
+								"new":      "RG_MyAPP_DemoTFCLOUD",
+								"old":      "",
+							},
+							"site_config.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"site_credential.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"source_control.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"storage_account.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"azurerm_app_service_plan": {
+				"plan-app": {
+					0: {
+						"applied": {
+							"app_service_environment_id": null,
+							"is_xenon":                   null,
+							"kind":                       "Windows",
+							"location":                   "westeurope",
+							"name":                       "demoappsp",
+							"per_site_scaling":           null,
+							"reserved":                   null,
+							"resource_group_name":        "RG_MyAPP_DemoTFCLOUD",
+							"sku": [
+								{
+									"size": "S1",
+									"tier": "Standard",
+								},
+							],
+							"tags":     null,
+							"timeouts": null,
+						},
+						"destroy": false,
+						"diff": {
+							"app_service_environment_id": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"is_xenon": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"kind": {
+								"computed": false,
+								"new":      "Windows",
+								"old":      "",
+							},
+							"location": {
+								"computed": false,
+								"new":      "westeurope",
+								"old":      "",
+							},
+							"maximum_elastic_worker_count": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"maximum_number_of_workers": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "demoappsp",
+								"old":      "",
+							},
+							"per_site_scaling": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"reserved": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"resource_group_name": {
+								"computed": false,
+								"new":      "RG_MyAPP_DemoTFCLOUD",
+								"old":      "",
+							},
+							"sku.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"sku.0.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"azurerm_application_insights": {
+				"appinsight-app": {
+					0: {
+						"applied": {
+							"application_type":    "web",
+							"disable_ip_masking":  false,
+							"location":            "westeurope",
+							"name":                "myappdemobookcloud",
+							"resource_group_name": "RG_MyAPP_DemoTFCLOUD",
+							"retention_in_days":   90,
+							"sampling_percentage": 100,
+							"tags":                null,
+							"timeouts":            null,
+						},
+						"destroy": false,
+						"diff": {
+							"app_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"application_type": {
+								"computed": false,
+								"new":      "web",
+								"old":      "",
+							},
+							"daily_data_cap_in_gb": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"daily_data_cap_notifications_disabled": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"disable_ip_masking": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"instrumentation_key": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"location": {
+								"computed": false,
+								"new":      "westeurope",
+								"old":      "",
+							},
+							"name": {
+								"computed": false,
+								"new":      "myappdemobookcloud",
+								"old":      "",
+							},
+							"resource_group_name": {
+								"computed": false,
+								"new":      "RG_MyAPP_DemoTFCLOUD",
+								"old":      "",
+							},
+							"retention_in_days": {
+								"computed": false,
+								"new":      "90",
+								"old":      "",
+							},
+							"sampling_percentage": {
+								"computed": false,
+								"new":      "100",
+								"old":      "",
+							},
+							"tags": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"timeouts": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+	[
+		"webapp",
+	],
+]
+
+terraform_version = "0.12.28"
+
+variables = {}
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+path = _modules.root.path
+resources = _modules.root.resources

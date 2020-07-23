@@ -1,0 +1,241 @@
+import "strings"
+
+providers = {
+	"azurerm": {
+		"alias": "",
+		"config": {
+			"features": [
+				{},
+			],
+		},
+		"module_address":      "",
+		"name":                "azurerm",
+		"provider_config_key": "azurerm",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"azurerm_resource_group.rg": {
+		"address": "azurerm_resource_group.rg",
+		"config": {
+			"location": {
+				"constant_value": "West Europe",
+			},
+			"name": {
+				"constant_value": "RG_MyAPP_DemoTFCLOUD",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "rg",
+		"provider_config_key": "azurerm",
+		"provisioners":        [],
+		"type":                "azurerm_resource_group",
+	},
+	"module.webapp.azurerm_app_service.app": {
+		"address": "module.webapp.azurerm_app_service.app",
+		"config": {
+			"app_service_plan_id": {
+				"references": [
+					"azurerm_app_service_plan.plan-app",
+				],
+			},
+			"app_settings": {
+				"references": [
+					"azurerm_application_insights.appinsight-app",
+				],
+			},
+			"location": {
+				"references": [
+					"var.location",
+				],
+			},
+			"name": {
+				"references": [
+					"var.app_name",
+				],
+			},
+			"resource_group_name": {
+				"references": [
+					"var.resource_groupe_name",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.webapp",
+		"name":                "app",
+		"provider_config_key": "module.webapp:azurerm",
+		"provisioners":        [],
+		"type":                "azurerm_app_service",
+	},
+	"module.webapp.azurerm_app_service_plan.plan-app": {
+		"address": "module.webapp.azurerm_app_service_plan.plan-app",
+		"config": {
+			"location": {
+				"references": [
+					"var.location",
+				],
+			},
+			"name": {
+				"references": [
+					"var.service_plan_name",
+				],
+			},
+			"resource_group_name": {
+				"references": [
+					"var.resource_groupe_name",
+				],
+			},
+			"sku": [
+				{
+					"size": {
+						"constant_value": "S1",
+					},
+					"tier": {
+						"constant_value": "Standard",
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.webapp",
+		"name":                "plan-app",
+		"provider_config_key": "module.webapp:azurerm",
+		"provisioners":        [],
+		"type":                "azurerm_app_service_plan",
+	},
+	"module.webapp.azurerm_application_insights.appinsight-app": {
+		"address": "module.webapp.azurerm_application_insights.appinsight-app",
+		"config": {
+			"application_type": {
+				"constant_value": "web",
+			},
+			"location": {
+				"references": [
+					"var.location",
+				],
+			},
+			"name": {
+				"references": [
+					"var.app_name",
+				],
+			},
+			"resource_group_name": {
+				"references": [
+					"var.resource_groupe_name",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.webapp",
+		"name":                "appinsight-app",
+		"provider_config_key": "module.webapp:azurerm",
+		"provisioners":        [],
+		"type":                "azurerm_application_insights",
+	},
+}
+
+provisioners = {}
+
+variables = {
+	"module.webapp:app_name": {
+		"default":        null,
+		"description":    "Name of application",
+		"module_address": "module.webapp",
+		"name":           "app_name",
+	},
+	"module.webapp:location": {
+		"default":        "West Europe",
+		"description":    "Location of Azure resource",
+		"module_address": "module.webapp",
+		"name":           "location",
+	},
+	"module.webapp:resource_groupe_name": {
+		"default":        null,
+		"description":    "Resource groupe name",
+		"module_address": "module.webapp",
+		"name":           "resource_groupe_name",
+	},
+	"module.webapp:service_plan_name": {
+		"default":        null,
+		"description":    "Service plan name",
+		"module_address": "module.webapp",
+		"name":           "service_plan_name",
+	},
+}
+
+outputs = {
+	"module.webapp:webapp_id": {
+		"depends_on":     [],
+		"description":    "",
+		"module_address": "module.webapp",
+		"name":           "webapp_id",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"azurerm_app_service.app",
+			],
+		},
+	},
+	"module.webapp:webapp_url": {
+		"depends_on":     [],
+		"description":    "",
+		"module_address": "module.webapp",
+		"name":           "webapp_url",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"azurerm_app_service.app",
+			],
+		},
+	},
+}
+
+module_calls = {
+	"webapp": {
+		"config": {
+			"app_name": {
+				"constant_value": "myappdemobookcloud",
+			},
+			"location": {
+				"constant_value": "West Europe",
+			},
+			"resource_groupe_name": {
+				"references": [
+					"azurerm_resource_group.rg",
+				],
+			},
+			"service_plan_name": {
+				"constant_value": "demoappsp",
+			},
+		},
+		"count":              {},
+		"for_each":           {},
+		"module_address":     "",
+		"name":               "webapp",
+		"source":             "app.terraform.io/demoBook/webapp/azurerm",
+		"version_constraint": "1.0.1",
+	},
+}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

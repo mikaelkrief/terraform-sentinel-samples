@@ -1,0 +1,225 @@
+import "strings"
+import "types"
+
+_modules = {
+	"root": {
+		"data": {},
+		"modules": {
+			"webapp": {
+				"config": {
+					"app_name":          "myappdemobookcloud",
+					"location":          "West Europe",
+					"service_plan_name": "demoappsp",
+				},
+				"references": {
+					"app_name": [],
+					"location": [],
+					"resource_groupe_name": [
+						"azurerm_resource_group.rg",
+					],
+					"service_plan_name": [],
+				},
+				"source":  "app.terraform.io/demoBook/webapp/azurerm",
+				"version": "1.0.1",
+			},
+		},
+		"outputs": {},
+		"providers": {
+			"azurerm": {
+				"alias": {
+					"": {
+						"config": {
+							"features": [
+								{},
+							],
+						},
+						"references": {
+							"features": [
+								{},
+							],
+						},
+						"version": "",
+					},
+				},
+				"config": {
+					"features": [
+						{},
+					],
+				},
+				"references": {
+					"features": [
+						{},
+					],
+				},
+				"version": "",
+			},
+		},
+		"resources": {
+			"azurerm_resource_group": {
+				"rg": {
+					"config": {
+						"location": "West Europe",
+						"name":     "RG_MyAPP_DemoTFCLOUD",
+					},
+					"provisioners": null,
+					"references": {
+						"location": [],
+						"name":     [],
+					},
+				},
+			},
+		},
+		"variables": {},
+	},
+
+	"module.webapp": {
+		"data":    {},
+		"modules": {},
+		"outputs": {
+			"webapp_id": {
+				"depends_on":  [],
+				"description": "",
+				"references": [
+					"azurerm_app_service.app",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+			"webapp_url": {
+				"depends_on":  [],
+				"description": "",
+				"references": [
+					"azurerm_app_service.app",
+				],
+				"sensitive": false,
+				"value":     undefined,
+			},
+		},
+		"providers": {},
+		"resources": {
+			"azurerm_app_service": {
+				"app": {
+					"config":       {},
+					"provisioners": null,
+					"references": {
+						"app_service_plan_id": [
+							"azurerm_app_service_plan.plan-app",
+						],
+						"app_settings": [
+							"azurerm_application_insights.appinsight-app",
+						],
+						"location": [
+							"var.location",
+						],
+						"name": [
+							"var.app_name",
+						],
+						"resource_group_name": [
+							"var.resource_groupe_name",
+						],
+					},
+				},
+			},
+			"azurerm_app_service_plan": {
+				"plan-app": {
+					"config": {
+						"sku": [
+							{
+								"size": "S1",
+								"tier": "Standard",
+							},
+						],
+					},
+					"provisioners": null,
+					"references": {
+						"location": [
+							"var.location",
+						],
+						"name": [
+							"var.service_plan_name",
+						],
+						"resource_group_name": [
+							"var.resource_groupe_name",
+						],
+						"sku": [
+							{
+								"size": [],
+								"tier": [],
+							},
+						],
+					},
+				},
+			},
+			"azurerm_application_insights": {
+				"appinsight-app": {
+					"config": {
+						"application_type": "web",
+					},
+					"provisioners": null,
+					"references": {
+						"application_type": [],
+						"location": [
+							"var.location",
+						],
+						"name": [
+							"var.app_name",
+						],
+						"resource_group_name": [
+							"var.resource_groupe_name",
+						],
+					},
+				},
+			},
+		},
+		"variables": {
+			"app_name": {
+				"default":     null,
+				"description": "Name of application",
+			},
+			"location": {
+				"default":     "West Europe",
+				"description": "Location of Azure resource",
+			},
+			"resource_groupe_name": {
+				"default":     null,
+				"description": "Resource groupe name",
+			},
+			"service_plan_name": {
+				"default":     null,
+				"description": "Service plan name",
+			},
+		},
+	},
+}
+
+module_paths = [
+	[],
+	[
+		"webapp",
+	],
+]
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+modules = _modules.root.modules
+providers = _modules.root.providers
+resources = _modules.root.resources
+variables = _modules.root.variables
+outputs = _modules.root.outputs
